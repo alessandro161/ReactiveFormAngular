@@ -1,23 +1,39 @@
 <div class="example-container">
     <form [formGroup]="mioForm">
+      <div>
   <mat-form-field>
     <input matInput placeholder="Nome" formControlName="nome">
   </mat-form-field>
+  <span *ngIf=" nome.invalid && nome.dirty " >Il campo nome deve contenere almeno 5 caratteri</span>
+</div>
+<div>
   <mat-form-field>
     <input matInput placeholder="Cognome" formControlName="cognome">
   </mat-form-field>
-  <mat-form-field>
+  <span *ngIf=" cognome.invalid && cognome.dirty " >Campo non valido</span>
+</div>
+<div> 
+    <mat-form-field>
     <input matInput placeholder="Citta" formControlName="citta">
   </mat-form-field>
+  <span *ngIf=" citta.invalid && citta.dirty " >Campo non valido</span>
+</div>
+<div>
     <mat-form-field>
-            <input matInput [matDatepicker]="myDatepicker">
+      <input matInput placeholder="e-mail" formControlName="email">
+    </mat-form-field>
+    <span *ngIf=" email.invalid && email.dirty " >Scrivere correttamente l'indirizzo mail</span>
+  </div>
+    <mat-form-field>
+            <input matInput [matDatepicker]="myDatepicker" placeholder="Data di nascita">
             <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
             <mat-datepicker #myDatepicker></mat-datepicker>
         </mat-form-field></form>
 </div>
 <h2>Risultato in tempo reale:</h2>
-<p>Titolo inserito: <b>{{this.mioForm.value.nome}}</b></p>
-<p>Autore inserito: <b>{{this.mioForm.value.cognome}}</b></p>
+<p>Nome inserito: <b>{{this.mioForm.value.nome}}</b></p>
+<p>Cognome inserito: <b>{{this.mioForm.value.cognome}}</b></p>
 <p>Città inserita: <b>{{this.mioForm.value.citta}}</b></p>
+<p>E-mail: <b>{{this.mioForm.value.email}}</b></p>
 
 
